@@ -13,8 +13,8 @@
 - Tex Liveのフルスキーム  
   (イメージを小さくしたい場合はスキームを変更してください)
 - Pandocフィルター
-  - Pandoc-crosreff
-  - Pandoc-plot (ビルド済みバイナリをGoogle Driveからコピー)
+  - [Pandoc-crosreff](https://github.com/lierdakil/pandoc-crossref)
+  - [Pandoc-plot](https://laurentrdc.github.io/pandoc-plot/) (HaskellでビルドしたバイナリをGoogle Driveからコピー)
   - 授業資料用のテンプレートとコンパイルするためのスクリプト
 - IPAフォント，Notoフォント
 - Gnuplot
@@ -163,3 +163,9 @@ Visual Studio Codeの場合，使い方は2パターン
 
 pipでpythonのパッケージをインストールできる
 - research_env/.pipにインストールされる
+
+
+## 参考
+
+- Yanagimotoさんの[VSCode + Dockerでよりミニマルでポータブルな研究環境を](https://zenn.dev/nicetak/articles/vscode-docker-2023)，[VSCode + Docker + Rstudio + DVC でポータブルな研究環境を作る](https://zenn.dev/nicetak/articles/vscode-docker-rstudio?redirected=1)
+- yetanothersuさんの[RStudio Serverで好きなフォントを使う](https://qiita.com/yetanothersu/items/18e098989cade90ee687)
