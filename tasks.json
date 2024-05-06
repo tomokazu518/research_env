@@ -1,0 +1,92 @@
+{
+
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Beamer (pandoc)",
+            "type": "shell",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "command": "pandoc",
+            "args": [
+                "-s",
+                "-f",
+                "markdown-auto_identifiers",
+                "--filter",
+                "pandoc-plot",
+                "-F",
+                "pandoc-crossref",
+                "-t",
+                "beamer",
+                "--slide-level=2",
+                "--template=/home/rstudio/pandoc/templates/beamer-without-notes.latex",
+                "--pdf-engine=xelatex",
+                "-o",
+                "${fileBasenameNoExtension}.pdf",
+                "${fileBasename}"
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Beamer with speaker's notes (pandoc)",
+            "type": "shell",
+            "command": "pandoc",
+            "args": [
+                "-s",
+                "-f",
+                "markdown-auto_identifiers",
+                "-F",
+                "pandoc-crossref",
+                "-t",
+                "beamer",
+                "--slide-level=2",
+                "--template=/home/rstudio/pandoc/templates/beamer-with-notes.latex",
+                "--pdf-engine=xelatex",
+                "-o",
+                "${fileBasenameNoExtension}-notes.pdf",
+                "${fileBasename}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "lecture note",
+            "type": "shell",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "command": "bash",
+            "args": [
+                "/home/rstudio/pandoc/script/lecture_beamer.sh",
+                "${fileBasename}"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "lecture note(blank)",
+            "type": "shell",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "command": "bash",
+            "args": [
+                "/home/rstudio/pandoc/script/lecture_beamer_blank.sh",
+                "${fileBasename}"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
