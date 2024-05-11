@@ -11,6 +11,9 @@ services:
       - PYTHONUSERBASE=/home/rstudio/.pip
       - DISABLE_AUTH=true
       - ROOT=true
+      - LANG=en_US.UTF-8
+      - LANGUAGE=en_US.UTF-8
+      - LC_ALL=en_US.UTF-8
     ports:
       - 8787:8787
     volumes:

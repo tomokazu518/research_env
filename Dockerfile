@@ -34,7 +34,6 @@ RUN ./install-tl \
 FROM rocker/rstudio:latest
 COPY --from=builder /usr/local/texlive /usr/local/texlive
 ARG TARGETARCH
-ENV LANG="en_US.UTF-8"
 
 WORKDIR /work
 
