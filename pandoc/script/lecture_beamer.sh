@@ -47,7 +47,6 @@ sed -i 's/\\textbf/\\textcolor{red}/g' $BASENAME.tex
 
 # texのコンパイル
 latexmk \
-  -e "$dvipdf=q/dvipdfmx %O -o %D %S/" \
   -pdfxe -shell-escape $BASENAME.tex
 
 # 一時ファイルのクリーンアップ
