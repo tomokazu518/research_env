@@ -45,7 +45,8 @@ RUN apt update && apt upgrade -y &&  \
       fontconfig fonts-ipafont fonts-ipaexfont fonts-noto-cjk\
       libfontconfig1-dev libharfbuzz-dev libfribidi-dev \
       libxt6 libudunits2-dev libproj-dev libgdal-dev \
-      python3 python3-pip && \
+      python3 python3-pip \
+      hugo && \
     apt autoremove -y && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
@@ -67,9 +68,21 @@ RUN mkdir /usr/local/texlive/texmf-local/tex/latex/gnuplot && \
     gnuplot -e "set term tikz createstyle" && \
     mktexlsr
 
+# Hugo 
+RUN HUGO=$( \
+      case ${TARGETARCH} in \
+      amd64 ) echo "https://github.com/gohugoio/hugo/releases/download/v0.128.0/hugo_0.128.0_linux-amd64.tar.gz";; \
+      arm64 ) echo "https://github.com/gohugoio/hugo/releases/download/v0.128.0/hugo_0.128.0_linux-arm64.tar.gz";; \
+    esac \
+    ) && \
+    wget ${HUGO} && \
+    tar -xf hugo_*.*.*_linux-*.tar.gz && \
+    mv hugo /usr/bin && \
+    chmod 755 /usr/bin/hugo
+
 # Pandocフィルターのインストール
 ## pandoc-crossref
-RUN wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.17.1/pandoc-crossref-Linux.tar.xz && \
+RUN wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.17.1a/pandoc-crossref-Linux.tar.xz  && \
     tar -xf pandoc-crossref-Linux.tar.xz && \
     mv pandoc-crossref /usr/bin
 ## pandoc-plot

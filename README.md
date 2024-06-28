@@ -105,8 +105,8 @@ research_envフォルダ内にtexliveというフォルダを作成して，CTAN
 
 ```
 cd research_env
-mkdir texlive
-rsync -a --delete rsync://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/tlnet/ texlive/
+mkdir texlive texlive/tlnet
+rsync -a --delete rsync://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/tlnet/ texlive/tlnet/
 ```
 
 - TexLiveをまるごと (5GB以上)ダウンロードするので，そこそこ時間がかかる
