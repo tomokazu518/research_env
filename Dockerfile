@@ -45,8 +45,7 @@ RUN apt update && apt upgrade -y &&  \
       fontconfig fonts-ipafont fonts-ipaexfont fonts-noto-cjk\
       libfontconfig1-dev libharfbuzz-dev libfribidi-dev \
       libxt6 libudunits2-dev libproj-dev libgdal-dev \
-      python3 python3-pip \
-      hugo && \
+      python3 python3-pip && \
     apt autoremove -y && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
