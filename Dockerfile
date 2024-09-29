@@ -45,10 +45,17 @@ RUN apt update && apt upgrade -y &&  \
       fontconfig fonts-ipafont fonts-ipaexfont fonts-noto-cjk\
       libfontconfig1-dev libharfbuzz-dev libfribidi-dev \
       libxt6 libudunits2-dev libproj-dev libgdal-dev \
-      python3 python3-pip && \
+      python3 python3-pip locales && \
     apt autoremove -y && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Set the locale
+RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
+locale-gen
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8  
 
 ## github copilot
 RUN echo "copilot-enabled=1" > /etc/rstudio/rsession.conf
